@@ -26,7 +26,7 @@ export default function CartPage() {
       `Total: ${formatPrice(totalPrice)}\n\nPlease confirm my order. 🙏`;
 
     window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
+      `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`,
       '_blank',
       'noopener,noreferrer'
     );
