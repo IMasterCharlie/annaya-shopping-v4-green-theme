@@ -100,8 +100,8 @@ const TestimonialCard = ({ t }: { t: typeof TESTIMONIALS[0] }) => {
         <img
           src={avatarUrl}
           alt={t.name}
-          width={48}
-          height={48}
+          width="48"
+          height="48"
           className="w-12 h-12 rounded-full object-cover shrink-0 border-2 border-emerald-100 shadow-sm"
           loading="lazy"
         />
