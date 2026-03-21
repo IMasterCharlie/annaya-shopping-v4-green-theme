@@ -24,6 +24,7 @@ export default function ProductDetailView({ initialProduct }: ProductDetailViewP
 
   const [product, setProduct] = useState<Product>(initialProduct);
   const [selectedSize, setSelectedSize] = useState(initialProduct.sizes?.[0] ?? 'Free Size');
+  const [selectedColor, setSelectedColor] = useState(initialProduct.colors?.[0]?.name ?? 'Any Colour');
   const [activeImage, setActiveImage] = useState(0);
   const [addedToCart, setAddedToCart] = useState(false);
 
@@ -36,7 +37,7 @@ export default function ProductDetailView({ initialProduct }: ProductDetailViewP
   const isWishlisted = wishlist.includes(product.id);
 
   const handleAddToCart = () => {
-    addToCart(product, selectedSize);
+    addToCart(product, selectedSize, selectedColor);
     setAddedToCart(true);
     setTimeout(() => setAddedToCart(false), 2000);
   };
@@ -182,16 +183,26 @@ export default function ProductDetailView({ initialProduct }: ProductDetailViewP
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {product.colors.map((color) => (
-                    <div key={color.name} className="flex flex-col items-center gap-1">
+                    <button
+                      key={color.name}
+                      onClick={() => setSelectedColor(color.name)}
+                      className="flex flex-col items-center gap-1 group"
+                    >
                       <div
-                        className="w-8 h-8 rounded-full border-2 border-white shadow-md"
+                        className={cn(
+                          "w-8 h-8 rounded-full border-2 shadow-md transition-all",
+                          selectedColor === color.name ? "border-emerald-600 scale-110" : "border-white hover:border-emerald-200"
+                        )}
                         style={{ backgroundColor: color.hex }}
                         title={color.name}
                       />
-                      <span className="text-[10px] text-emerald-900/50 font-medium">
+                      <span className={cn(
+                        "text-[10px] font-medium transition-colors",
+                        selectedColor === color.name ? "text-emerald-700" : "text-emerald-900/50 group-hover:text-emerald-900/80"
+                      )}>
                         {color.name}
                       </span>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -259,7 +270,7 @@ export default function ProductDetailView({ initialProduct }: ProductDetailViewP
 
               <button
                 onClick={() => {
-                  const waMessage = `Hello!\n\nI'm interested in ordering the *${product.name}*.\n\nSize: ${selectedSize}\nColor: Any Colour\nPrice: ${formatPrice(product.price)}\n\nIs this available?`;
+                  const waMessage = `Hello!\n\nI'm interested in ordering the *${product.name}*.\n\nSize: ${selectedSize}\nColor: ${selectedColor}\nPrice: ${formatPrice(product.price)}\n\nIs this available?`;
                   window.open(`https://wa.me/${WHATSAPP_NUMBER.replace(/\s+/g, '')}?text=${encodeURIComponent(waMessage)}`, '_blank');
                 }}
                 className="w-full h-16 rounded-full border-2 border-emerald-900/20 text-emerald-950 font-bold tracking-widest bg-green-300 hover:bg-emerald-50 transition-all flex items-center justify-center gap-3"

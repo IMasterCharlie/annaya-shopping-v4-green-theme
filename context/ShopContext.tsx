@@ -21,9 +21,9 @@ interface ShopContextType {
   isLoading: boolean;
   error: string | null;
   /* Cart actions */
-  addToCart: (product: Product, size: string) => void;
-  removeFromCart: (productId: string, size: string) => void;
-  updateCartQuantity: (productId: string, size: string, delta: number) => void;
+  addToCart: (product: Product, size: string, color?: string) => void;
+  removeFromCart: (productId: string, size: string, color?: string) => void;
+  updateCartQuantity: (productId: string, size: string, color: string | undefined, delta: number) => void;
   clearCart: () => void;
   /* Wishlist actions */
   toggleWishlist: (productId: string) => void;
@@ -57,7 +57,19 @@ export const ShopProvider: React.FC<{
     try {
       const savedCart     = localStorage.getItem('ananya_cart');
       const savedWishlist = localStorage.getItem('ananya_wishlist');
-      if (savedCart)     setCart(JSON.parse(savedCart));
+      if (savedCart) {
+        const parsedCart = JSON.parse(savedCart);
+        // Migration/Sanitization: ensure selectedColor is a string
+        const sanitizedCart = parsedCart.map((item: any) => ({
+          ...item,
+          selectedColor: typeof item.selectedColor === 'object' && item.selectedColor?.name 
+            ? item.selectedColor.name 
+            : typeof item.selectedColor === 'string' 
+              ? item.selectedColor 
+              : undefined
+        }));
+        setCart(sanitizedCart);
+      }
       if (savedWishlist) setWishlist(JSON.parse(savedWishlist));
     } catch {
       // Ignore corrupt storage
@@ -108,36 +120,48 @@ export const ShopProvider: React.FC<{
 
   // ── Cart helpers ───────────────────────────────────────────────────────────
 
-  const addToCart = useCallback((product: Product, size: string) => {
+  const addToCart = useCallback((product: Product, size: string, color?: string) => {
     // BUG FIX: guard against missing sizes array
     const safeSize = size || product.sizes?.[0] || 'Free Size';
+    
+    // Robustly handle color input - ensure it's a string name
+    let safeColor: string | undefined;
+    if (typeof color === 'string') {
+      safeColor = color;
+    } else if (typeof color === 'object' && (color as any).name) {
+      safeColor = (color as any).name;
+    } else {
+      safeColor = (product.colors && product.colors.length > 0) ? product.colors[0].name : undefined;
+    }
 
     setCart((prev) => {
       const existing = prev.find(
-        (item) => item.id === product.id && item.selectedSize === safeSize
+        (item) => item.id === product.id && item.selectedSize === safeSize && item.selectedColor === safeColor
       );
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id && item.selectedSize === safeSize
+          item.id === product.id && item.selectedSize === safeSize && item.selectedColor === safeColor
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      return [...prev, { ...product, quantity: 1, selectedSize: safeSize }];
+      return [...prev, { ...product, quantity: 1, selectedSize: safeSize, selectedColor: safeColor }];
     });
   }, []);
 
-  const removeFromCart = useCallback((productId: string, size: string) => {
+  const removeFromCart = useCallback((productId: string, size: string, color?: string) => {
+    const colorStr = typeof color === 'object' ? (color as any).name : color;
     setCart((prev) =>
-      prev.filter((item) => !(item.id === productId && item.selectedSize === size))
+      prev.filter((item) => !(item.id === productId && item.selectedSize === size && item.selectedColor === colorStr))
     );
   }, []);
 
   const updateCartQuantity = useCallback(
-    (productId: string, size: string, delta: number) => {
+    (productId: string, size: string, color: string | undefined, delta: number) => {
+      const colorStr = typeof color === 'object' ? (color as any).name : color;
       setCart((prev) =>
         prev.map((item) => {
-          if (item.id === productId && item.selectedSize === size) {
+          if (item.id === productId && item.selectedSize === size && item.selectedColor === colorStr) {
             const newQty = Math.max(1, item.quantity + delta);
             return { ...item, quantity: newQty };
           }

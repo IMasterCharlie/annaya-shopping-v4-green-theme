@@ -16,7 +16,7 @@ export default function CartPage() {
     const waLines = cart
       .map(
         (item) =>
-          `• ${item.name} (Size: ${item.selectedSize}) ×${item.quantity} — ${formatPrice(item.price * item.quantity)}`
+          `• ${item.name} (${item.selectedSize}${item.selectedColor ? ` / ${item.selectedColor}` : ''}) ×${item.quantity} — ${formatPrice(item.price * item.quantity)}`
       )
       .join('\n');
 
@@ -24,7 +24,7 @@ export default function CartPage() {
       "Hello! I'd like to place an order:\n",
       waLines,
       deliveryFee === 0
-        ? "\n✅ Free shipping applies (order above ₹999)"
+        ? "\n✅ Free shipping applied"
         : `\n🚚 Shipping: ${formatPrice(deliveryFee)}`,
       `\n*Total: ${formatPrice(grandTotal)}*`,
       "\nPlease confirm availability and share payment details. Thank you!",

@@ -38,7 +38,7 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item }) => {
               {item.name}
             </h3>
             <button
-              onClick={() => removeFromCart(item.id, item.selectedSize)}
+              onClick={() => removeFromCart(item.id, item.selectedSize, item.selectedColor)}
               className="text-emerald-900/40 hover:text-red-500 transition-colors flex-shrink-0"
               aria-label="Remove item"
             >
@@ -46,7 +46,7 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item }) => {
             </button>
           </div>
           <p className="text-xs text-emerald-700/60 font-medium uppercase tracking-wider mt-1">
-            Size: {item.selectedSize}
+            Size: {item.selectedSize} {item.selectedColor && `• Color: ${item.selectedColor}`}
           </p>
           <p className="text-lg font-bold text-emerald-900 mt-1">
             {formatPrice(item.price)}
@@ -56,7 +56,7 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item }) => {
         <div className="flex items-center justify-between mt-2">
           <div className="flex items-center gap-3 bg-emerald-50 rounded-full px-3 py-1.5 border border-emerald-100">
             <button
-              onClick={() => updateCartQuantity(item.id, item.selectedSize, -1)}
+              onClick={() => updateCartQuantity(item.id, item.selectedSize, item.selectedColor, -1)}
               className="text-emerald-900 hover:text-emerald-700 transition-colors"
               aria-label="Decrease quantity"
             >
@@ -66,7 +66,7 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item }) => {
               {item.quantity}
             </span>
             <button
-              onClick={() => updateCartQuantity(item.id, item.selectedSize, 1)}
+              onClick={() => updateCartQuantity(item.id, item.selectedSize, item.selectedColor, 1)}
               className="text-emerald-900 hover:text-emerald-700 transition-colors"
               aria-label="Increase quantity"
             >

@@ -27,45 +27,53 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       viewport={{ once: true }}
       className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-emerald-900/5"
     >
-      {/* Image */}
-      <Link
-        href={`/products/${product.slug}`}
-        prefetch={false}
-        className="relative aspect-[3/4] overflow-hidden cursor-pointer block"
-      >
-        {product.images?.[0] ? (
-          <Image
-            src={product.images[0]}
-            alt={product.name}
-            fill
-            loading="lazy"
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
-          />
-        ) : (
-          <div className="w-full h-full bg-emerald-50 flex items-center justify-center text-emerald-300">
-            No image
+      {/* Image & Overlay Area */}
+      <div className="relative aspect-[3/4] overflow-hidden cursor-pointer group/image">
+        <Link
+          href={`/products/${product.slug}`}
+          prefetch={false}
+          className="relative w-full h-full block"
+        >
+          {product.images?.[0] ? (
+            <Image
+              src={product.images[0]}
+              alt={product.name}
+              fill
+              loading="lazy"
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
+            />
+          ) : (
+            <div className="w-full h-full bg-emerald-50 flex items-center justify-center text-emerald-300">
+              No image
+            </div>
+          )}
+
+          {/* Badges */}
+          <div className="absolute top-4 left-4 flex flex-col gap-2">
+            {product.isNewArrival && (
+              <span className="bg-emerald-900 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                New
+              </span>
+            )}
+            {(product.isTrending || product.rating >= 4.8) && (
+              <span className="bg-luxury-gold text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                Trending
+              </span>
+            )}
           </div>
-        )}
 
-        {/* Badges */}
-        <div className="absolute top-4 left-4 flex flex-col gap-2">
-          {product.isNewArrival && (
-            <span className="bg-emerald-900 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
-              New
-            </span>
-          )}
-          {(product.isTrending || product.rating >= 4.8) && (
-            <span className="bg-luxury-gold text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
-              Trending
-            </span>
-          )}
-        </div>
-
-        {/* Quick Actions */}
-        <div className="absolute top-4 right-4 flex flex-col gap-2 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+          <div className="absolute inset-0 bg-emerald-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        </Link>
+        
+        {/* Quick Actions (OUTSIDE of Link to prevent bubbling/navigation) */}
+        <div className="absolute top-4 right-4 flex flex-col gap-2 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 z-10">
           <button
-            onClick={(e) => { e.stopPropagation(); toggleWishlist(product.id); }}
+            onClick={(e) => { 
+              e.preventDefault();
+              e.stopPropagation(); 
+              toggleWishlist(product.id); 
+            }}
             className={cn(
               'p-2.5 rounded-full shadow-lg transition-colors',
               isWishlisted
@@ -77,16 +85,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <Heart size={18} fill={isWishlisted ? 'currentColor' : 'none'} />
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); addToCart(product, defaultSize); }}
+            onClick={(e) => { 
+              e.preventDefault();
+              e.stopPropagation(); 
+              addToCart(product, defaultSize); 
+            }}
             className="p-2.5 bg-white text-emerald-900 rounded-full shadow-lg hover:bg-emerald-50 transition-colors"
             aria-label="Add to cart"
           >
             <ShoppingBag size={18} />
           </button>
         </div>
-
-        <div className="absolute inset-0 bg-emerald-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-      </Link>
+      </div>
 
       {/* Info */}
       <div className="p-4 lg:p-6">
