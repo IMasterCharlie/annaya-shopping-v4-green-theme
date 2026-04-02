@@ -123,7 +123,7 @@ const Footer: React.FC = () => {
       {/* Bottom bar */}
       <div className="max-w-7xl mx-auto px-4 lg:px-8 mt-16 pt-8 border-t border-emerald-900/30">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wider text-emerald-100/30 uppercase font-medium">
-          <p>© {year} Ananya Boutique. All Rights Reserved. <br />Developed by <Link href="https://www.github.com/IMasterCharlie" target="_blank" className="hover:text-luxury-gold transition-colors">Mohammed Mehraj.</Link></p>
+          <p>© {year} Ananya Boutique. All Rights Reserved.</p>
           <div className="flex items-center gap-8">
             <button className="hover:text-luxury-gold transition-colors">
               Privacy Policy
