@@ -8,9 +8,9 @@ import {
 } from 'lucide-react';
 
 const STATS = [
-  { value: '30+',  label: 'Years of Heritage'  },
-  { value: '100k+', label: 'Happy Customers'       },
-  { value: '500+', label: 'Artisans Supported'  },
+  { value: '30+', label: 'Years of Heritage' },
+  { value: '100k+', label: 'Happy Customers' },
+  { value: '500+', label: 'Artisans Supported' },
 ];
 
 const FEATURES = [
@@ -32,10 +32,10 @@ const FEATURES = [
 ];
 
 const CONTACT = [
-  { icon: Phone,  label: 'Call Us',   value: '+91 74949 54286'               },
-  { icon: Mail,   label: 'Email Us',  value: 'ananyaboutique9495@gmail.com'  },
-  { icon: MapPin, label: 'Visit Us',  value: 'Mumbai, Maharashtra, India'    },
-  { icon: Clock,  label: 'Hours',     value: 'Mon – Sun: 7am – 10pm'        },
+  { icon: Phone, label: 'Call Us', value: '+91 76005 58179' },
+  { icon: Mail, label: 'Email Us', value: 'ananyaboutique9495@gmail.com' },
+  { icon: MapPin, label: 'Visit Us', value: 'Mumbai, Maharashtra, India' },
+  { icon: Clock, label: 'Hours', value: 'Mon – Sun: 7am – 10pm' },
 ];
 
 export default function AboutPage() {
