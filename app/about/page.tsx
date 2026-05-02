@@ -6,6 +6,7 @@ import {
   Instagram, Facebook, Twitter, Rss as Pinterest,
   Users, Sparkles, ShieldCheck,
 } from 'lucide-react';
+import { formatPhoneDisplay } from '@/utils';
 
 const STATS = [
   { value: '30+', label: 'Years of Heritage' },
@@ -32,7 +33,7 @@ const FEATURES = [
 ];
 
 const CONTACT = [
-  { icon: Phone, label: 'Call Us', value: '+91 76005 58179' },
+  { icon: Phone, label: 'Call Us', value: formatPhoneDisplay() },
   { icon: Mail, label: 'Email Us', value: 'ananyaboutique9495@gmail.com' },
   { icon: MapPin, label: 'Visit Us', value: 'Mumbai, Maharashtra, India' },
   { icon: Clock, label: 'Hours', value: 'Mon – Sun: 7am – 10pm' },

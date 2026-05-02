@@ -13,6 +13,7 @@ import {
   Rss as Pinterest,
 } from 'lucide-react';
 import { CATEGORIES } from '@/data/categories';
+import { formatPhoneDisplay } from '@/utils';
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();
@@ -101,7 +102,7 @@ const Footer: React.FC = () => {
           </h4>
           <div className="space-y-4">
             {[
-              { Icon: Phone, label: 'Call Us', value: '+91 76005 58179' },
+              { Icon: Phone, label: 'Call Us', value: formatPhoneDisplay() },
               { Icon: Mail, label: 'Email Us', value: 'ananyaboutique9495@gmail.com' },
               { Icon: MapPin, label: 'Visit Us', value: 'Mumbai, Maharashtra, India' },
               { Icon: Clock, label: 'Hours', value: 'Mon – Sun: 7am – 10pm' },
