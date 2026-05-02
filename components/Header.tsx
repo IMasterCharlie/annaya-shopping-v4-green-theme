@@ -41,10 +41,10 @@ const Header: React.FC = () => {
 
             <Link href="/" className="flex flex-col items-center justify-center">
               <span className="text-xl lg:text-2xl font-serif font-bold tracking-widest text-emerald-950 uppercase">
-                Ananya
+                Ruchika
               </span>
               <span className="text-[10px] lg:text-xs tracking-[0.3em] font-medium text-emerald-700/60 -mt-1 uppercase">
-                Boutique
+                Threads
               </span>
             </Link>
           </div>

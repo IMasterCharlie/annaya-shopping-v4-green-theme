@@ -25,23 +25,23 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Ananya Boutique — Elegance in Every Thread',
+  title: 'Ruchika Threads — Elegance in Every Thread',
   description:
     'Discover premium ethnic wear — sarees, suits, gowns & more. Curated collections for the modern Indian woman.',
   keywords: ['sarees', 'ethnic wear', 'boutique', 'Indian fashion', 'gowns'],
-  metadataBase: new URL('https://ananyashopping.site'),
+  metadataBase: new URL('https://ruchikathreads.store'),
   openGraph: {
-    title: 'Ananya Boutique — Elegance in Every Thread',
+    title: 'Ruchika Threads — Elegance in Every Thread',
     description: 'Premium ethnic wear — sarees, suits, gowns & more.',
-    url: 'https://ananyashopping.site',
-    siteName: 'Ananya Boutique',
+    url: 'https://ruchikathreads.store',
+    siteName: 'Ruchika Threads',
     images: [{ url: '/hero.webp', width: 1536, height: 1024 }],
     locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ananya Boutique — Elegance in Every Thread',
+    title: 'Ruchika Threads — Elegance in Every Thread',
     description: 'Premium ethnic wear — sarees, suits, gowns & more.',
     images: ['/hero.webp'],
   },

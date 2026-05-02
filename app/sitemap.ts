@@ -5,7 +5,7 @@ import { ProductModel } from '@/lib/models/Product';
 export const revalidate = 3600; // Regenerate sitemap every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = 'https://ananyashopping.site';
+  const base = 'https://ruchikathreads.store';
 
   // Static routes
   const staticRoutes: MetadataRoute.Sitemap = [

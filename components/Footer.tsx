@@ -26,10 +26,10 @@ const Footer: React.FC = () => {
         <div className="space-y-6">
           <Link href="/" className="flex flex-col items-start">
             <span className="text-2xl font-serif font-bold tracking-widest text-white uppercase">
-              Ananya
+              Ruchika
             </span>
             <span className="text-xs tracking-[0.3em] font-medium text-luxury-gold -mt-1 uppercase">
-              Boutique
+              Threads
             </span>
           </Link>
           <p className="text-sm leading-relaxed text-emerald-100/60">
@@ -124,7 +124,7 @@ const Footer: React.FC = () => {
       {/* Bottom bar */}
       <div className="max-w-7xl mx-auto px-4 lg:px-8 mt-16 pt-8 border-t border-emerald-900/30">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wider text-emerald-100/30 uppercase font-medium">
-          <p>© {year} Ananya Boutique. All Rights Reserved.</p>
+          <p>© {year} Ruchika Threads. All Rights Reserved.</p>
           <div className="flex items-center gap-8">
             <button className="hover:text-luxury-gold transition-colors">
               Privacy Policy

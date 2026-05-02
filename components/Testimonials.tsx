@@ -15,7 +15,7 @@ const TESTIMONIALS = [
     id: 2,
     name: "Priya Patel",
     role: "Fashion Blogger",
-    text: "I've never seen such intricate embroidery work. Ananya Boutique is my go-to for every festive season.",
+    text: "I've never seen such intricate embroidery work. Ruchika Threads is my go-to for every festive season.",
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ const TESTIMONIALS = [
     id: 8,
     name: "Nisha Verma",
     role: "Model",
-    text: "Walking for Ananya Boutique was an honor. Their designs are truly pieces of art.",
+    text: "Walking for Ruchika Threads was an honor. Their designs are truly pieces of art.",
   },
   {
     id: 9,

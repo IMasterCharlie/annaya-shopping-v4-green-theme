@@ -56,7 +56,7 @@ export default function AboutPage() {
             <span className="text-luxury-gold italic">Since 1994</span>
           </h1>
           <p className="text-emerald-100/70 text-lg leading-relaxed mb-8">
-            Ananya Boutique started as a small dream to preserve the rich heritage of
+            Ruchika Threads started as a small dream to preserve the rich heritage of
             Indian textiles while embracing modern aesthetics. From intricate hand-woven
             sarees to contemporary silhouettes, we bring you the finest craftsmanship.
           </p>

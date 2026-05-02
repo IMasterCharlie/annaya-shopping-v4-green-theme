@@ -65,7 +65,7 @@ const Hero: React.FC = () => (
     <div className="absolute bottom-10 right-10 hidden lg:flex flex-col items-end gap-2">
       <div className="w-24 h-[1px] bg-white/30" />
       <span className="text-[10px] text-white/50 uppercase tracking-[0.5em] font-medium">
-        Ananya Boutique
+        Ruchika Threads
       </span>
     </div>
   </section>

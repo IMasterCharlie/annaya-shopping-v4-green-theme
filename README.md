@@ -1,4 +1,4 @@
-# Ananya Boutique — Next.js 15
+# Ruchika Threads — Next.js 15
 
 A full-stack e-commerce boutique app built with **Next.js 15 App Router**, **Tailwind CSS v4**, **Mongoose / MongoDB Atlas**, and **Framer Motion**.
 
