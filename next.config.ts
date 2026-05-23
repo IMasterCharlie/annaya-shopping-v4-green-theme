@@ -36,11 +36,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'www.ruchikathreads.store',
+        hostname: 'www.AnnayaShopping.store',
       },
       {
         protocol: 'https',
-        hostname: 'ruchikathreads.store',
+        hostname: 'AnnayaShopping.store',
       },
     ],
   },

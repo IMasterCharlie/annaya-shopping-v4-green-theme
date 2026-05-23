@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ruchikathreads.store/sitemap.xml
+Sitemap: https://AnnayaShopping.store/sitemap.xml

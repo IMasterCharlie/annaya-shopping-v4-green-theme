@@ -14,10 +14,10 @@ import { useShop } from '@/context/ShopContext';
 import { cn } from '@/utils';
 
 const NAV_LINKS = [
-  { label: 'Home',        href: '/'          },
-  { label: 'Shop',        href: '/shop'       },
-  { label: 'Categories',  href: '/categories' },
-  { label: 'About',       href: '/about'      },
+  { label: 'Home', href: '/' },
+  { label: 'Shop', href: '/shop' },
+  { label: 'Categories', href: '/categories' },
+  { label: 'About', href: '/about' },
 ];
 
 const Header: React.FC = () => {
@@ -41,10 +41,10 @@ const Header: React.FC = () => {
 
             <Link href="/" className="flex flex-col items-center justify-center">
               <span className="text-xl lg:text-2xl font-serif font-bold tracking-widest text-emerald-950 uppercase">
-                Ruchika
+                Annaya
               </span>
               <span className="text-[10px] lg:text-xs tracking-[0.3em] font-medium text-emerald-700/60 -mt-1 uppercase">
-                Threads
+                Shopping
               </span>
             </Link>
           </div>
